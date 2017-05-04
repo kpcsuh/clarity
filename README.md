@@ -1,2 +1,2 @@
 # clarity
-Clarity JS framework with angular JS
+Clarity JS framework with angular JS.
