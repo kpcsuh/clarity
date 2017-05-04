@@ -1,0 +1,78 @@
+<div class="container">
+
+  <div class="alert alert-info" role="alert" *ngIf="confirmationMessage">
+      {{confirmationMessage}}
+  </div>
+
+    <div class="row">
+    <div class="card col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="card-block">
+                <div class="card-title">
+                    <clr-icon shape="user" class="is-solid" size="36"></clr-icon>  {{examinee.lastName}}, {{examinee.firstName}} ( {{examinee.dob | datepipe}} )
+                </div>
+            </div>
+    </div>
+</div>
+
+<br/> <br/><br/>
+
+<h1 class="stack-title">Examinee Assessment List</h1>
+
+<div class="col-md-12 col-lg-12" *ngIf="examineeAssessments">
+    <div class="input-group">
+        <input type="text" #examineeAsseessmentSearch
+               placeholder="Examinee Assessment search .." name="examineeAssessmentSearch"
+               id="examineeAssessmentSearch" [(ngModel)]="searchWord" size="50">
+        <span class="input-group-btn">
+      <button type="button" class="btn btn-default" (click)="searchExamineeAssessments()">Search</button>
+      <button type="button" class="btn btn-primary" style="float:right" (click)="newExamineeAssessment()">New Assessment</button>
+    </span>
+    </div>
+</div>
+
+<clr-datagrid [clrDgLoading]="loading">
+    <clr-dg-column [clrDgField]="'formId'" >Assessment</clr-dg-column>
+    <clr-dg-column [clrDgField]="'modality'">Modality</clr-dg-column>
+    <clr-dg-column [clrDgField]="'adminstrationDate'">Adminstration Date</clr-dg-column>
+    <clr-dg-column [clrDgField]="'accountId'">Account Id</clr-dg-column>
+     <clr-dg-placeholder>We couldn't find any Examinee Assessments!</clr-dg-placeholder>
+    <clr-dg-row *clrDgItems="let examineeAssessment of examineeAssessments | async ">
+        <clr-dg-cell>{{examineeAssessment.formId}}</clr-dg-cell>
+        <clr-dg-row-detail *clrIfExpanded>
+       <div *ngIf="examineeAssessment.subtests">Subtests: <ul class="list-inline" *ngFor="let subtest of examineeAssessment.subtests"> <li>{{subtest}} </li> </ul></div><br/>
+   </clr-dg-row-detail>
+        <clr-dg-cell>{{examineeAssessment.modality}}</clr-dg-cell>
+        <clr-dg-cell>{{examineeAssessment.adminstrationDate | datepipe}}</clr-dg-cell>
+        <clr-dg-cell>{{examineeAssessment.accountId}}</clr-dg-cell>
+        <clr-dg-action-overflow>
+    <button class="action-item" (click)="delete(examineeAssessment.id)">Delete</button>
+
+    </clr-dg-action-overflow>
+    </clr-dg-row>
+
+    <!-- <clr-dg-footer>{{examinees ? examinees.length : 0 }} Examiness</clr-dg-footer> -->
+    <clr-dg-footer>
+    {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}}
+    of {{pagination.totalItems}} users
+    <clr-dg-pagination #pagination [clrDgPageSize]="10"></clr-dg-pagination>
+</clr-dg-footer>
+</clr-datagrid>
+
+
+
+
+
+
+
+    <!-- <br/><br/> -->
+    <!-- <button type="button" class="btn btn-primary pull-right" (click)="newExamineeAssessment()"><span
+            class="glyphicon glyphicon-plus" aria-hidden="true"></span></button> -->
+
+    <!-- <div class="row">
+        <div class="btn-group pull-right" role="group" aria-label="...">
+            <button type="button" class="btn btn-danger" (click)=deleteExaminee(examinee.id)><span
+                    class="glyphicon glyphicon-user glyphicon-trash" aria-hidden="true"></span> Delete Examinee
+            </button>
+        </div>
+    </div> -->
+</div>

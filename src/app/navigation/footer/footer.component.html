@@ -1,0 +1,19 @@
+<hr>
+<footer>
+    <div class="container small">
+        <div>
+          &copy; 2017 Pearson, Inc.
+          <div class="row">
+            <div class="col-md-2" *ngFor="let f of footerObject">
+              <a href="{{f.value}}" target="_blank"> {{f.key}} </a>
+            </div>
+          </div>
+            <!-- <ul class="list-inline">
+                <li class="col-sm-4 col-md-2"> &copy; 2017 Pearson, Inc.</li>
+            </ul> -->
+            <!-- <ul class="list-inline" *ngFor="let f of footerObject">
+                <li class="col-sm-3 col-md-2"><a href="{{f.value}}" target="_blank"> {{f.key}} </a></li>
+            </ul> -->
+        </div>
+    </div>
+</footer>

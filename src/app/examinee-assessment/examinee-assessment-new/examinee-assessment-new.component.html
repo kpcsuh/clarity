@@ -1,0 +1,205 @@
+<div class="container">
+    <h1>{{title}} </h1>
+
+
+    <div class="row">
+    <div class="card col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="card-block">
+                <div class="card-title">
+                      <h3 class="panel-title"><span class="badge badge-warning">1</span> Who is assessment for?</h3>
+                </div>
+            </div>
+
+            <div class="card-block" *ngIf="examinee">
+                <div class="card-title">
+                    <clr-icon shape="user" class="is-solid" size="36"></clr-icon>  {{examinee.lastName}}, {{examinee.firstName}} ( {{examinee.dob | datepipe}} )
+                </div>
+
+            </div>
+    </div>
+</div>
+
+
+    <br/> <br/>
+
+    <div class="row">
+    <div class="card col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="card-block">
+                <div class="card-title">
+                      <h3 class="panel-title"><span class="badge badge-warning">2</span> Which assessments do you need to assign?</h3>
+                </div>
+            </div>
+
+            <div class="card-block" *ngIf="examinee">
+                <div class="row card-block">
+                  <div class="col-xs-6 col-md-4 ">
+                      <div>
+                          <div class="input-group">
+                              <input type="text" class="form-control" placeholder="Search for...">
+                              <span class="input-group-btn">
+              <button class="btn btn-default" type="button">Go!</button>
+            </span>
+                          </div><!-- /input-group -->
+                      </div><!-- /.col-lg-6 -->
+                      <br/>
+
+                      <li class="list-group-item active">
+                          All assessments
+                      </li>
+
+                      <div class="list-group">
+                          <button type="button" class="list-group-item"
+                                  [ngClass]="{active: (selectedAssessmentValue == assessment)}"
+                                  *ngFor="let assessment of assessmentsObservable | async"
+                                  (click)="selectAssessment(assessment)" size="70" >{{assessment}}
+                          </button>
+
+                      </div>
+                  </div>
+                  <div class="col-xs-6 col-md-8" [hidden]="!assessmentSelected">
+
+
+
+
+                              <h3><span class="label label-lg label-info">{{selectedAssessmentValue}}</span></h3>
+
+                              <form #eaForm="ngForm" (ngSubmit)="save()">
+                                  <div class="row">
+
+                                      <div class="col-sm-12 col-md-6">
+                                          <label for="firstName">
+                                              Delivery Type
+                                          </label>
+
+                                          <div class="btn-group" role="group" aria-label="..." *ngIf="delivetyTypes">
+                                              <button type="button" class="btn btn-default"
+                                                      [ngClass]="{active: (selectedModality == delivetyType)}"
+                                                      #deliveryTypeVar value="{{delivetyType}}"
+                                                      *ngFor="let delivetyType of delivetyTypes"
+                                                      (click)=deliverySelected(deliveryTypeVar.value)>
+                                                  {{delivetyType}}
+                                              </button>
+                                          </div>
+                                      </div>
+
+                                      <div class=" col-sm-12 col-md-5">
+                                          <label for="adminstrationDate">
+                                              Adminstration date
+                                          </label>
+
+                                          <div class="">
+                                              <input id="adminstrationDate" name="adminstrationDate" class="form-control"
+                                                     type="date" [(ngModel)]="this.adminstationDate"
+                                                     #adminDate="ngModel"
+                                                     placeholder="Adminstration Date" required
+                                                     aria-describedby="sizing-addon1">
+                                              <div [hidden]="adminDate.valid || adminDate.pristine || adminDate.value < today"
+                                                   class="alert alert-danger">
+                                                  Adminstration Date Required
+                                              </div>
+                                          </div>
+                                      </div>
+
+                                  </div>
+
+                                  <div class="row">
+
+                                      <!-- <div class = "btn-group">
+                                        <button  class="list-group-item col-sm-12 col-md-4"  *ngFor="let subtest of subtests" #subtestlist (click) = "subtestlist.active = !subtestlist.active">
+                                          <h4 class="list-group-item-heading">{{subtest}}</h4>
+                                          <p class="list-group-item-text">Subtest description</p>
+                                        </button>
+                                      </div> -->
+                                  </div>
+
+                                  <br/><br/>
+
+                                  <div class="row" [hidden]="hideSubtest">
+                                      <label class="col-sm-12 col-md-12">
+                                          Sub tests
+                                      </label>
+                                      <div class="col-sm-8 col-md-4"
+                                           *ngFor="let subtest of subtestsObservable | async; let i =index" #subtest_{subtest}
+                                           (click)="subtestSelected(subtest, i)">
+                                          <div class="">
+                                            <clr-icon shape="check text-primary" *ngIf="subtestSelectedObject[i]"></clr-icon>
+                                              <label>
+                                              {{subtest}} </label>
+                                          </div>
+                                      </div>
+
+
+                                  </div>
+
+                                  <div class="row" [hidden]="hideRaterInformation">
+                                      <div class=" col-sm-12 col-md-4">
+                                          <label for="firstName">
+                                              First Name
+                                          </label>
+
+                                          <div class="">
+                                              <input id="firstName" class="form-control" type="text"
+                                                     [(ngModel)]="this.rater.firstName"
+                                                     #fname="ngModel"
+                                                     name="firstName" placeholder="First Name"
+                                                     [required]="!hideRaterInformation" aria-describedby="sizing-addon1">
+                                              <div [hidden]="fname.valid || fname.pristine"
+                                                   class="alert alert-danger">
+                                                  First Name is required
+                                              </div>
+                                          </div>
+                                      </div>
+
+                                      <div class=" col-sm-12 col-md-4">
+                                          <label for="firstName">
+                                              Last Name
+                                          </label>
+
+                                          <div class="">
+                                              <input id="lastName" class="form-control" type="text"
+                                                     [(ngModel)]="this.rater.lastName"
+                                                     #sname="ngModel"
+                                                     name="lastName" placeholder="Last Name"
+                                                     [required]="!hideRaterInformation" aria-describedby="sizing-addon1">
+                                              <div [hidden]="sname.valid || sname.pristine"
+                                                   class="alert alert-danger">
+                                                  Last Name is required
+                                              </div>
+                                          </div>
+                                      </div>
+
+                                      <div class=" col-sm-12 col-md-4">
+                                          <label for="email">
+                                              Email
+                                          </label>
+
+                                          <div class="">
+                                              <input id="email" class="form-control" type="text"
+                                                     [(ngModel)]="this.rater.email"
+                                                     #email="ngModel"
+                                                     name="email" placeholder="Email" [required]="!hideRaterInformation"
+                                                     aria-describedby="sizing-addon1">
+                                              <div [hidden]="email.valid || email.pristine"
+                                                   class="alert alert-danger">
+                                                  Email is required
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <br/>
+
+                                  <div class=" col-sm-12 col-md-12">
+                                      <input type="submit" class="btn btn-primary btn-md" value="Assign"
+                                             [disabled]="!eaForm.valid"
+                                             (click)="submit()">
+                                  </div>
+                              </form>
+
+
+                  </div>
+                </div>
+
+            </div>
+    </div>
+</div>
+</div>

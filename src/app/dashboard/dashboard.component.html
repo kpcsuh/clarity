@@ -1,0 +1,211 @@
+
+<clr-alert>
+    <div class="alert-item">
+        <span class="alert-text">
+            The ProjectOne new release deployement schduled coming Saturday. The Application is not available between 9 and 12 UTC.
+        </span>
+    </div>
+</clr-alert>
+
+<!-- <div class="row" style="float:right">
+<span><h1><small>May</small>5</h1></span>
+</div>
+<br/><br/> -->
+
+
+
+<div class="row">
+  <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+      <div class="card">
+          <div class="card-header">
+              Assessments
+          </div>
+          <div class="card-block">
+              <div class="card-text">
+                <clr-stack-view>
+                    <!-- <clr-stack-header>Assessments</clr-stack-header> -->
+
+
+                    <clr-stack-block [clrSbExpanded]="true">
+                      <clr-stack-label><span class="label label-danger">Needs Editing <span class="badge badge-danger">15</span></span></clr-stack-label>
+                        <clr-stack-content></clr-stack-content>
+                        <clr-stack-block>
+                            <clr-stack-label>John, Henry</clr-stack-label>
+                            <clr-stack-content>BASC-3</clr-stack-content>
+                        </clr-stack-block>
+                        <clr-stack-block>
+                            <clr-stack-label>Mary, Hudgeson</clr-stack-label>
+                            <clr-stack-content>GFTA</clr-stack-content>
+                        </clr-stack-block>
+                        <clr-stack-block>
+                            <clr-stack-label>Peter, Ryan</clr-stack-label>
+                            <clr-stack-content>WIAT-III</clr-stack-content>
+                        </clr-stack-block>
+                    </clr-stack-block>
+
+
+                    <clr-stack-block [clrSbExpanded]="false">
+                        <clr-stack-label><span class="label label-info">Inprogress <span class="badge badge-info">3</span></span></clr-stack-label>
+                        <clr-stack-content></clr-stack-content>
+                        <clr-stack-block>
+                            <clr-stack-label>John, Henry</clr-stack-label>
+                            <clr-stack-content>BASC-3</clr-stack-content>
+                        </clr-stack-block>
+                        <clr-stack-block>
+                            <clr-stack-label>Mary, Hudgeson</clr-stack-label>
+                            <clr-stack-content>GFTA</clr-stack-content>
+                        </clr-stack-block>
+                        <clr-stack-block>
+                            <clr-stack-label>Peter, Ryan</clr-stack-label>
+                            <clr-stack-content>WIAT-III</clr-stack-content>
+                        </clr-stack-block>
+                    </clr-stack-block>
+
+                    <clr-stack-block>
+                        <clr-stack-label><span class="label label-success">Ready <span class="badge badge-success">25</span></span></clr-stack-label>
+                        <clr-stack-content></clr-stack-content>
+                        <clr-stack-block>
+                            <clr-stack-label>Chris, Kresuel</clr-stack-label>
+                            <clr-stack-content>WISC-V</clr-stack-content>
+                        </clr-stack-block>
+                        <clr-stack-block>
+                            <clr-stack-label>Ben, Mathew</clr-stack-label>
+                            <clr-stack-content>WIAT-III</clr-stack-content>
+                        </clr-stack-block>
+                    </clr-stack-block>
+                    <clr-stack-block>
+                        <clr-stack-label><span class="label label-warning">Assigned <span class="badge badge-warning">12</span></span></clr-stack-label>
+                        <clr-stack-content></clr-stack-content>
+                        <clr-stack-block>
+                            <clr-stack-label>Chris, Kresuel</clr-stack-label>
+                            <clr-stack-content>WISC-V</clr-stack-content>
+                        </clr-stack-block>
+                        <clr-stack-block>
+                            <clr-stack-label>Ben, Mathew</clr-stack-label>
+                            <clr-stack-content>WIAT-III</clr-stack-content>
+                        </clr-stack-block>
+                    </clr-stack-block>
+                </clr-stack-view>
+              </div>
+          </div>
+          <div class="card-footer">
+            <button class="btn btn-sm btn-primary" (click) = "navigateToNewExaminee()">Create New Examinee</button>
+            <button class="btn btn-sm btn-primary">Create new Battery</button>
+            <button class="btn btn-sm btn-primary">View Reports</button>
+          </div>
+      </div>
+  </div>
+
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="card-header">
+                Recent Examinees
+            </div>
+            <div class="card-block">
+                <div class="card-text">
+                  <ul class="list-group list-group-flush">
+                  <li class="list-group-item">John Paul <a href="#"> more ..</a></li>
+                  <li class="list-group-item">Ruth Henry  <a href="#"> more ..</a></li>
+                  <li class="list-group-item">Chris Kreusel<a href="#"> more ..</a></li>
+                  </ul>
+                </div>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-sm btn-primary" (click) = "navigateToExamiee()">View All Examinees</button>
+                <button class="btn btn-sm btn-primary">View Reports</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="card-header">
+                Message Center
+            </div>
+            <div class="card-block">
+
+                <div class="card-text">
+    <clr-alert [clrAlertClosable]="false" [clrAlertType]="'alert-default'">
+  <div class="alert-item">
+      <span class="alert-text">
+          Marketing 05/01/2017<br/>GFTA-3 French is ready for purchage
+      </span>
+      <div class="alert-actions">
+          <clr-dropdown [clrMenuPosition]="'bottom-right'">
+              <button class="dropdown-toggle" clrDropdownToggle>
+                  Actions
+                  <clr-icon shape="caret down"></clr-icon>
+              </button>
+              <div class="dropdown-menu">
+                  <a href="..." class="dropdown-item" clrDropdownItem>Purchase</a>
+                  <a href="..." class="dropdown-item" clrDropdownItem>Remind me later</a>
+                  <a href="..." class="dropdown-item" clrDropdownItem>Do not show me again</a>
+              </div>
+          </clr-dropdown>
+      </div>
+  </div>
+</clr-alert>
+<clr-alert [clrAlertType]="'alert-warning'">
+  <div class="alert-item">
+      <span class="alert-text">
+        GENERAL  05/20/2017<br/>
+        System maintence on 05/29/2017
+      </span>
+  </div>
+</clr-alert>
+<clr-alert [clrAlertType]="'alert-info'">
+  <div class="alert-item">
+    <span class="alert-text">
+      ACCOUNT        05/01/2017 <br/>BASC-3 inventory has been added to your account
+    </span>
+  </div>
+</clr-alert>
+<clr-alert [clrAlertType]="'alert-info'">
+  <div class="alert-item">
+      <span class="alert-text">
+      GENERAL    05/01/2017<br/>Practice mode has been updated to include reporting.
+      </span>
+  </div>
+</clr-alert>
+<clr-alert [clrAlertType]="'alert-warning'">
+  <div class="alert-item">
+      <span class="alert-text">
+          KTEA-3 subscription expires on 06/01/2017
+      </span>
+  </div>
+</clr-alert>
+                </div>
+            </div>
+            <!-- <div class="card-footer">
+                <button class="btn btn-sm btn-link">Footer Action 1</button>
+                <button class="btn btn-sm btn-link">Footer Action 2</button>
+            </div> -->
+        </div>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="card-header">
+                Coming soon
+            </div>
+            <div class="card-block">
+                <!-- <div class="card-title">
+                    Block
+                </div> -->
+                <div class="card-text">
+                  <ul class="list-group list-group-flush">
+                  <li class="list-group-item">Try practice mode <a href="#"> more ..</a></li>
+                  <li class="list-group-item">New Webinar on Account management  <a href="#"> more ..</a></li>
+                  <li class="list-group-item">Auto score feature <a href="#"> more ..</a></li>
+                  </ul>
+                </div>
+
+            </div>
+            <!-- <div class="card-footer">
+                <button class="btn btn-sm btn-link">Footer Action 1</button>
+                <button class="btn btn-sm btn-link">Footer Action 2</button>
+            </div> -->
+        </div>
+    </div>
+</div>

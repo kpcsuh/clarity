@@ -1,0 +1,23 @@
+
+<clr-datagrid [clrDgLoading]="loading">
+    <clr-dg-column [clrDgField]="'firstName'" >First Name</clr-dg-column>
+    <clr-dg-column [clrDgField]="'lastName'">Last Name</clr-dg-column>
+    <clr-dg-column [clrDgField]="'examineeId'">Examinee Id</clr-dg-column>
+    <clr-dg-column [clrDgField]="'dob'">DOB</clr-dg-column>
+    <clr-dg-column [clrDgField]="'gender'">Gender</clr-dg-column>
+     <clr-dg-placeholder>We couldn't find any Examinees!</clr-dg-placeholder>
+    <clr-dg-row *clrDgItems="let examinee of examinees | async ">
+        <clr-dg-cell>{{examinee.firstName}}</clr-dg-cell>
+        <clr-dg-row-detail *clrIfExpanded>
+       Email: {{examinee.email}} <br/>
+       Comments: {{examinee.comments}}
+   </clr-dg-row-detail>
+        <clr-dg-cell>{{examinee.lastName}}</clr-dg-cell>
+        <clr-dg-cell>{{examinee.examineeId}}</clr-dg-cell>
+        <clr-dg-cell>{{examinee.dob | datepipe}}</clr-dg-cell>
+        <clr-dg-cell>{{examinee.gender}}</clr-dg-cell>
+        <clr-dg-action-overflow>
+    <button class="action-item" (click)="edit(examinee.id)">Edit</button>
+    <button class="action-item" (click)="delete(examinee.id)">Delete</button>
+    </clr-dg-action-overflow>
+    </clr-dg-row>

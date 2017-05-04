@@ -1,0 +1,24 @@
+<!-- <div class="form-control" *ngIf="examinee">
+  <div class="col-sm-2 col-md-2">
+    {{examinee.id}}
+  </div>
+  <div class="col-sm-2 col-md-2">
+      {{examinee.firstName}}
+  </div>
+  <div class="col-sm-2 col-md-2">
+    {{examinee.lastName}}
+  </div>
+  <div class="col-sm-2 col-md-2">
+    {{examinee.dob}}
+  </div>
+  <div class="col-sm-2 col-md-2">
+    {{examinee.gender}}
+  </div>
+</div> -->
+
+<tr class="panel panel-primary" *ngIf="examinee">
+    <td>{{examinee.firstName}}</td>
+    <td>{{examinee.lastName}}</td>
+    <td>{{examinee.dob | datepipe}}</td>
+    <td>{{examinee.gender}}</td>
+</tr>

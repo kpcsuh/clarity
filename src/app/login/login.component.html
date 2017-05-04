@@ -1,0 +1,132 @@
+
+<div class="login-wrapper">
+
+    <form class="login" #loginForm="ngForm">
+        <label class="title">
+            Pearson Clinical<span class="trademark">&#8482;</span>
+            ProjectOne&#174;
+        </label>
+
+
+        <div class="login-group">
+          <clr-alert [clrAlertType]="'alert-warning'">
+    <div class="alert-item">
+        <span class="alert-text">
+            Scheduled outage on 05/29/2017.
+        </span>
+    </div>
+</clr-alert>
+            <div class="auth-source select">
+                <select id="login-auth-source-1">
+                    <option>Local Users</option>
+                    <option>Administrator</option>
+                </select>
+            </div>
+            <input id="username" class="username" type="text"
+                   [(ngModel)]="this.unknownUser.userName"
+                   #uname="ngModel" name="username" required aria-describedby="sizing-addon1" placeholder="Username">
+
+            <input id="password" class="password" type="password"
+                   [(ngModel)]="this.unknownUser.password"
+                   #pw="ngModel" name="password" required aria-describedby="sizing-addon1" placeholder="Password">
+
+            <div class="checkbox">
+                <input type="checkbox" id="rememberme">
+                <label for="rememberme">
+                    Remember me
+                </label>
+            </div>
+            <div [hidden]="validLogin" class="error active">
+                {{loginResponse}}
+            </div>
+            <button type="submit" class="btn btn-primary btn-md" [disabled]="!loginForm.form.valid"
+                    (click)="authenticate()"><span class="glyphicon glyphicon-log-in"
+                                                   area-hidden="true"></span>&nbsp;&nbsp;Log In
+            </button>
+            <a href="..." class="signup">Sign up for an account</a>
+        </div>
+    </form>
+</div>
+
+
+
+<!-- <div class="jumbotron">
+    <div class="container">
+        <h1>Welcome to Q-Assessments!!!</h1>
+        <p>We are world leader in assessments business. We have been changing many lives by our assessments.
+            We are proud to serve you through our assessment products. Our products are GOLD standard products.</p>
+        <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
+        <div>
+            <div class="container login-container pull-left">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">New Customer</h3>
+                    </div>
+                    <div class="panel-body">
+                        <p> Please call our customer support. We are glad to create your account.</p>
+                        <span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span> (210)-339-5000
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="container login-container pull-right">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"> Project One login</h3>
+                    </div>
+                    <div class="panel-body">
+
+                        <form #loginForm="ngForm">
+                            <div [hidden]="validLogin" class="alert alert-warning">{{loginResponse}}</div>
+                            <div class="form-group">
+                                <label for="username">
+                                    Username
+                                </label>
+
+                                <div class="input-group input-group-lg form-group">
+                  <span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-user"
+                                                                           area-hidden="true"></span> </span>
+                                    <input id="username" class="form-control" type="text"
+                                           [(ngModel)]="this.unknownUser.userName"
+                                           #uname="ngModel" name="username" required aria-describedby="sizing-addon1">
+                                    <div [hidden]="uname.valid || uname.pristine"
+                                         class="alert alert-danger">
+                                        Name is required
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <div class="input-group input-group-lg form-group">
+                                    <span class="input-group-addon" id="sizing-addon1">...</span>
+                                    <input id="password" class="form-control" type="password"
+                                           [(ngModel)]="this.unknownUser.password"
+                                           #pw="ngModel" name="password" required aria-describedby="sizing-addon1">
+                                    <div [hidden]="pw.valid || pw.pristine"
+                                         class="alert alert-danger">
+                                        password is required
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary btn-md" [disabled]="!loginForm.form.valid"
+                                        (click)="authenticate()"><span class="glyphicon glyphicon-log-in"
+                                                                       area-hidden="true"></span>&nbsp;&nbsp;Submit
+                                </button>
+                            </div>
+                            <div class="form-group pull-right">
+                                <button type="button" class="btn btn-default">Forgot password</button>
+                            </div>
+
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->

@@ -1,0 +1,113 @@
+<!--
+  ~ Copyright (c) 2016 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+<p>This is a Clarity seed application. This is the default page that loads for the application.</p>
+
+<button type="submit" class="btn btn-primary">Primary</button>
+<clr-dropdown [clrMenuPosition]="'bottom-right'">
+    <button class="btn btn-outline-primary" clrDropdownToggle>
+        Dropdown
+        <clr-icon shape="caret down"></clr-icon>
+    </button>
+    <div class="dropdown-menu">
+        <label class="dropdown-header">Dropdown header</label>
+        <a href="javascript://" clrDropdownItem>Action 1</a>
+        <a href="javascript://" clrDropdownItem>Action 2</a>
+        <a href="javascript://" class="disabled" clrDropdownItem>Disabled</a>
+        <div class="dropdown-divider"></div>
+        <a href="javascript://" clrDropdownItem>Link 1</a>
+        <a href="javascript://" clrDropdownItem>Link 2</a>
+    </div>
+</clr-dropdown>
+
+<clr-datagrid>
+    <clr-dg-column>User ID</clr-dg-column>
+    <clr-dg-column>Name</clr-dg-column>
+    <clr-dg-column>Creation date</clr-dg-column>
+    <clr-dg-column>Favorite color</clr-dg-column>
+
+    <clr-dg-row *ngFor="let user of users">
+        <clr-dg-cell>{{user.id}}</clr-dg-cell>
+        <clr-dg-cell>{{user.name}}</clr-dg-cell>
+        <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
+        <clr-dg-cell>{{user.color}}</clr-dg-cell>
+    </clr-dg-row>
+
+
+    <h4 class="stack-header">
+    <span class="stack-title">Static stack view</span>
+    <span class="stack-actions">
+        <button class="stack-action btn btn-sm btn-link" type="button">Edit</button>
+    </span>
+</h4>
+<dl class="stack-view">
+    <div class="stack-block">
+        <dt class="stack-block-label">Label 1</dt>
+        <dd class="stack-block-content">Content 1</dd>
+    </div>
+    <div class="stack-block stack-block-expandable stack-block-expanded">
+        <dt class="stack-block-label">Label 2</dt>
+        <dd class="stack-block-content">Content 2</dd>
+        <div class="stack-children">
+            <div class="stack-block">
+                <dt class="stack-block-label">Sub-label 1</dt>
+                <dd class="stack-block-content">Sub-content 1</dd>
+            </div>
+            <div class="stack-block">
+                <dt class="stack-block-label">Sub-label 2</dt>
+                <dd class="stack-block-content">Sub-content 2</dd>
+            </div>
+            <div class="stack-block">
+                <dt class="stack-block-label">Sub-label 3</dt>
+                <dd class="stack-block-content">Sub-content 3</dd>
+            </div>
+        </div>
+    </div>
+    <div class="stack-block stack-block-expandable">
+        <dt class="stack-block-label">Label 3</dt>
+        <dd class="stack-block-content">Content 3</dd>
+        <div class="stack-children"></div>
+    </div>
+</dl>
+
+
+<clr-stack-view>
+    <clr-stack-header>Angular stack view</clr-stack-header>
+
+    <clr-stack-block>
+        <clr-stack-label>Label 1</clr-stack-label>
+        <clr-stack-content>Content 1</clr-stack-content>
+    </clr-stack-block>
+
+    <clr-stack-block [clrSbExpanded]="true">
+        <clr-stack-label>Label 2</clr-stack-label>
+        <clr-stack-content>Content 2</clr-stack-content>
+        <clr-stack-block>
+            <clr-stack-label>Sub-label 1</clr-stack-label>
+            <clr-stack-content>Sub-content 1</clr-stack-content>
+        </clr-stack-block>
+        <clr-stack-block>
+            <clr-stack-label>Sub-label 2</clr-stack-label>
+            <clr-stack-content>Sub-content 2</clr-stack-content>
+        </clr-stack-block>
+        <clr-stack-block>
+            <clr-stack-label>Sub-label 3</clr-stack-label>
+            <clr-stack-content>Sub-content 3</clr-stack-content>
+        </clr-stack-block>
+    </clr-stack-block>
+
+    <clr-stack-block>
+        <clr-stack-label>Label 3</clr-stack-label>
+        <clr-stack-content>Content 3</clr-stack-content>
+        <clr-stack-block>
+            <clr-stack-label>Sub-label 4</clr-stack-label>
+            <clr-stack-content>Sub-content 4</clr-stack-content>
+        </clr-stack-block>
+        <clr-stack-block>
+            <clr-stack-label>Sub-label 5</clr-stack-label>
+            <clr-stack-content>Sub-content 5</clr-stack-content>
+        </clr-stack-block>
+    </clr-stack-block>
+</clr-stack-view>
