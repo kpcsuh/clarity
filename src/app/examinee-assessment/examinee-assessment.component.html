@@ -19,6 +19,13 @@
 <h1 class="stack-title">Examinee Assessment List</h1>
 
 <div class="col-md-12 col-lg-12" *ngIf="examineeAssessments">
+<header class="col-md-3 col-lg-3">
+  <form class="search">
+    <label for="search_input">
+      <input id="search_input" type="text" placeholder="Search for Components...">
+    </label>
+  </form>
+</header>
     <div class="input-group">
         <input type="text" #examineeAsseessmentSearch
                placeholder="Examinee Assessment search .." name="examineeAssessmentSearch"
@@ -45,7 +52,7 @@
         <clr-dg-cell>{{examineeAssessment.adminstrationDate | datepipe}}</clr-dg-cell>
         <clr-dg-cell>{{examineeAssessment.accountId}}</clr-dg-cell>
         <clr-dg-action-overflow>
-    <button class="action-item" (click)="delete(examineeAssessment.id)">Delete</button>
+    <button class="action-item" (click)="deleteExamineeAssessment(examineeAssessment.id)">Delete</button>
 
     </clr-dg-action-overflow>
     </clr-dg-row>

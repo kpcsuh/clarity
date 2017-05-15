@@ -72,7 +72,9 @@ export class ExamineeComponent implements OnInit {
       this.router.navigate(['/examinee/new'], {skipLocationChange: true});
     }
 
-
+    edit(id:string) {
+      this.router.navigate(['examinee/edit', id], {skipLocationChange: true});
+    }
 
     delete(id: string) {
         this.examineeService.delete(id).subscribe(response => {

@@ -14,7 +14,8 @@ export class AuthenticationGuard implements CanActivate {
         if (this.tokenService.hasValidToken()) {
             return true;
         } else {
-            this.router.navigate(['/login']);
+          this.tokenService.clearTokenData();
+          this.router.navigate(['/login']);
         }
         return false;
     }

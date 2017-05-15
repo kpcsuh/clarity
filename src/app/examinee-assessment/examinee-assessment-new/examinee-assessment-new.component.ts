@@ -124,7 +124,7 @@ export class ExamineeAssessmentNewComponent implements OnInit {
             this.examinee.id, this.selectedAssessmentValue, this.selectedModality, this.adminstationDate,
             "1234", "status", this.raterFirstName, this.raterLastName, this.raterEmail, Array.from(this.selectedSubtests));
         this.examineeAssessmentService.save(examineeAssessment).subscribe(response => {
-            this.router.navigate(['/examinee-assessment'], {skipLocationChange: true})
+            this.router.navigate(['/examinee-assessment', this.examineeId], {skipLocationChange: true})
         })
     }
 

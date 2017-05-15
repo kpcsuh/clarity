@@ -9,9 +9,9 @@ import {ListComponent} from './list/list.component';
 const routes: Routes = [
     {path: '', redirectTo: 'login', pathMatch: 'full'},
     {path: 'home', redirectTo: 'dashboard', pathMatch: 'full'},
-    {path: 'dashboard', component: DashboardComponent, pathMatch: 'full'},
+    {path: 'dashboard', component: DashboardComponent, pathMatch: 'full', canActivate: [AuthenticationGuard]},
      {path: 'list', component: ListComponent, pathMatch: 'full'},
-   {path: 'examinee', component: ExamineeComponent, pathMatch: 'full'},
+   {path: 'examinee', component: ExamineeComponent, pathMatch: 'full', canActivate: [AuthenticationGuard]},
   //  {path: 'examinee', loadChildren: './examinee/examinee.module#ExamineeModule', /* canActivate: [AuthenticationGuard] */},
     {path: 'item-entry', loadChildren : './dynamic-item-entry/dynamic-item-entry.module#DynamicItemEntryModule', /*canActivate: [AuthenticationGuard]*/},
     {path: 'login', loadChildren : './login/login.module#LoginModule', /*canActivate: [AuthenticationGuard]*/}
